@@ -20,7 +20,6 @@ def start_responses():
 @app.route("/questions/<int:n>")
 def give_question(n):
     k = len(session['responses'])
-    print(session["responses"],"This is the questions/n route")
     if k == 4:
         return redirect("/thank_you")
     elif k != n:
@@ -33,9 +32,7 @@ def give_answers():
     answer = request.args['ans']
     session['responses'].append(answer)
     session.modified = True
-    print(session['responses'],"This is the /answer route")
     if len(session['responses']) < 4:
-        print(len(session['responses']))
         return redirect(f"/questions/{(len(session['responses']))%4}")
     return redirect("/thank_you")
 
