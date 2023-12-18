@@ -10,9 +10,9 @@ debug = DebugToolbarExtension(app)
 
 @app.route('/')
 def satisfaction_questions():
-    return render_template('sat_survey.html' ,title = satisfaction_survey.title, instructions = satisfaction_survey.instructions)
+    return render_template('sat_survey.html',title = satisfaction_survey.title, instructions = satisfaction_survey.instructions)
     
-@app.route('/responses')
+@app.route('/responses', methods=['POST'])
 def start_responses():
     session['responses'] = []
     return redirect('/questions/0')
